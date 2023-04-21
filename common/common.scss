@@ -48,37 +48,25 @@
             background-color: #eceff8;
             border-radius: 4px;
         }
+    }
 
-        .roadmap-number.released {
-            background-color: #e2f0e7;
-            .count {
-                color: #00ca72;
-            }
-        }
-        .roadmap-number.on-roadmap {
-            background-color: #ECEFF8;
-            .count {
-                color: #6161ff;
-            }
-        }
-        .roadmap-number.under-consideration {
-            background-color: #FFF5CC;
-            .count {
-                color: #caa100;
-            }
-        }
+    .circle-indicators {
+        display: none;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
     
-        .roadmap-number {
-            border-radius: 4px;
-            flex: 1;
-            padding: 20px;
-            text-align: center;
+    .circle {
+        width: 10px;
+        height: 10px;
+        border: 1px solid black;
+        border-radius: 50%;
+        cursor: pointer;
+    }
     
-            .count {
-                font-size: 20px;
-                font-weight: bold;
-            }
-        }
+    .circle[data-index="0"] {
+        background-color: black;
     }
 
 }
