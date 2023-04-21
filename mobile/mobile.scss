@@ -1,10 +1,11 @@
 .top-voted-topics .top-voted-topics-list {
-    flex-direction: column;
     padding: 10px;
     row-gap: 10px;
-    
+    overflow-x: auto;
+
     .top-voted-topic {
-        
+        box-sizing: border-box;
+        min-width: 85%;
     }
 }
 

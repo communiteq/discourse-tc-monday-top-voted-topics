@@ -10,21 +10,12 @@ export default class TopVoted extends Component {
     constructor() {
         super(...arguments);
         withPluginApi("0.3.0", (api) => {
-            this.router = api.container.lookup('service:router');
             api.onPageChange((url, title) => {
-                var routeInfo = this.router.recognize(url);
-                if ((routeInfo.name == 'tags.showCategory') || (routeInfo.name == 'discovery.category')) {
-                    var param = routeInfo.params.category_slug_path_with_id || '';
-                    if (param.startsWith('submit-an-idea')) {
-                        this.mustShow = true;
-                    } else {
-                        this.mustShow = false;
-                    }
-                }
-                else {
+                if ((url == "/") || url.startsWith('/?')) {
+                    this.mustShow = true;
+                } else {
                     this.mustShow = false;
                 }
-                this.mustShow = true;
                 if (this.mustShow) {
                     var category_id = settings.vote_category_id;
                     var tag_name = settings.vote_tag_name;
