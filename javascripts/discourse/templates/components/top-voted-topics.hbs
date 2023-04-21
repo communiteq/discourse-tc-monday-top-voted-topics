@@ -1,0 +1,18 @@
+{{#if mustShow}}
+<div class="top-voted-topics">
+    <div class="header">Top voted ideas from the community</div>
+    <div class="top-voted-topics-list">
+        {{#each top_voted_topics as |topic|}}
+        <div class="top-voted-topic">
+            <div class="vote-count">
+                {{topic.vote_count}} votes
+            </div>
+            <div class="vote-title">{{topic.title}} {{topic.title}}</div>
+            <div class="vote-link">
+                <a href="/t/{{topic.slug}}/{{topic.id}}">View the idea &gt;</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{/if}}

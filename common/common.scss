@@ -1,0 +1,84 @@
+.top-voted-topics {
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    .header {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+
+    .top-voted-topics-list {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        column-gap: 30px;
+    
+        .top-voted-topic {
+            flex: 1;
+            padding: 20px 50px 30px 20px;
+
+            .vote-count {
+                color: #6161ff;
+                font-size: 18pt;
+                font-weight: bold;
+                margin-bottom: 80px;
+            }
+            .vote-title {
+                color: #000;
+                font-weight: bold;
+                font-size: 1.2em;
+                line-height: 1.2;
+                height: 2.4em; 
+                overflow: hidden;
+                margin-bottom: 20px;
+
+            }
+            .vote-link {
+                a, a:hover, a:visited {
+                    color: #000;
+                }
+            }
+        }
+
+        .top-voted-topic:nth-child(odd) {
+            border: 1px solid #6161ff;
+            border-radius: 4px;
+        }
+        .top-voted-topic:nth-child(even) {
+            background-color: #eceff8;
+            border-radius: 4px;
+        }
+
+        .roadmap-number.released {
+            background-color: #e2f0e7;
+            .count {
+                color: #00ca72;
+            }
+        }
+        .roadmap-number.on-roadmap {
+            background-color: #ECEFF8;
+            .count {
+                color: #6161ff;
+            }
+        }
+        .roadmap-number.under-consideration {
+            background-color: #FFF5CC;
+            .count {
+                color: #caa100;
+            }
+        }
+    
+        .roadmap-number {
+            border-radius: 4px;
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+    
+            .count {
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+
+}

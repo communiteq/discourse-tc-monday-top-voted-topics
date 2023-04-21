@@ -1,0 +1,12 @@
+vote_category_id:
+  type: string
+  default: "7"
+  description: 
+    en: 'Category ID to select the votes from.'
+vote_tag_name:
+  type: string
+  default: "under-consideration"
+  description: 
+    en: 'Tag name to select the votes from.'
+
+
