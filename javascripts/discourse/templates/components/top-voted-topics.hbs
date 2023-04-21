@@ -1,5 +1,5 @@
 {{#if mustShow}}
-<div class="top-voted-topics">
+<div class="top-voted-topics" {{did-insert this.onComponentMount}}>
     <div class="header">Top voted ideas from the community</div>
     <div class="top-voted-topics-list">
         {{#each top_voted_topics as |topic|}}

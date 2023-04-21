@@ -3,10 +3,12 @@ import { withPluginApi } from "discourse/lib/plugin-api"
 import { tracked } from '@glimmer/tracking';
 import { ajax } from "discourse/lib/ajax";
 import { action } from '@ember/object'
+import { bind } from "discourse-common/utils/decorators"
 
 export default class TopVoted extends Component {
     @tracked mustShow = false;
     @tracked top_voted_topics = [];
+    index = 0;
 
     constructor() {
         super(...arguments);
@@ -27,6 +29,7 @@ export default class TopVoted extends Component {
                 }
             });
         });
+
     }
 
     get showComponent() {
@@ -40,6 +43,7 @@ export default class TopVoted extends Component {
     }
 
     updateIndicators(index) {
+        this.index = index;
         const indicators = document.querySelectorAll('.circle');
         indicators.forEach((indicator, idx) => {
             if (idx === index) {
@@ -58,4 +62,14 @@ export default class TopVoted extends Component {
         this.updateIndicators(index);
     }
 
+    @action
+    onComponentMount() {
+        const element = document.querySelector('.top-voted-topics-list');
+        element.addEventListener('scroll', (event) => {
+          var idx = Math.max(Math.floor(event.target.scrollLeft / 250), 0);
+          if (idx != this.index) {
+              this.updateIndicators(idx);
+          }
+        });
+    }
 }
