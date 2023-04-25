@@ -47,9 +47,11 @@ export default class TopVoted extends Component {
         const indicators = document.querySelectorAll('.circle');
         indicators.forEach((indicator, idx) => {
             if (idx === index) {
-                indicator.style.backgroundColor = 'black';
+                indicator.style.backgroundColor = '#6161ff';
+                indicator.style.borderColor = '#6161ff';
             } else {
                 indicator.style.backgroundColor = 'transparent';
+                indicator.style.borderColor = '#676879';
             }
         });
       }

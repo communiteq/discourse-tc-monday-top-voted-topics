@@ -60,13 +60,14 @@
     .circle {
         width: 10px;
         height: 10px;
-        border: 1px solid black;
+        border: 1px solid #676879;
         border-radius: 50%;
         cursor: pointer;
     }
     
     .circle[data-index="0"] {
-        background-color: black;
+        background-color: #6161ff;
+        border: 1px solid #6161ff;
     }
 
 }
