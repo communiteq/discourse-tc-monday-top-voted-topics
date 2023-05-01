@@ -21,10 +21,13 @@ export default class TopVoted extends Component {
                 }
                 if (this.mustShow) {
                     var category_id = settings.vote_category_id;
-                    var tag_name = settings.vote_tag_name;
 
-                    ajax(`/tags/c/vote_component/${category_id}/none/${tag_name}/l/latest.json?order=votes`).then((result) => {
-                        this.top_voted_topics = result.topic_list.topics.slice(0, 3);
+                    ajax(`/c/vote_component/${category_id}.json?order=votes`).then((result) => {
+                        const whitelist = settings.vote_tag_name.split(',');
+                        const filteredTopics = result.topic_list.topics.filter((topic) => {
+                            return topic.tags.some((tag) => whitelist.includes(tag));
+                        });
+                        this.top_voted_topics = filteredTopics.slice(0,3);
                     });
                 }
             });
@@ -44,7 +47,7 @@ export default class TopVoted extends Component {
 
     updateIndicators(index) {
         this.index = index;
-        const indicators = document.querySelectorAll('.circle');
+        const indicators = document.querySelectorAll('.top-voted-topics .circle-indicators .circle');
         indicators.forEach((indicator, idx) => {
             if (idx === index) {
                 indicator.style.backgroundColor = '#6161ff';

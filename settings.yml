@@ -5,8 +5,8 @@ vote_category_id:
     en: 'Category ID to select the votes from.'
 vote_tag_name:
   type: string
-  default: "under-consideration"
+  default: "on-roadmap,under-consideration"
   description: 
-    en: 'Tag name to select the votes from.'
+    en: 'Comma separated tag names to select the votes from.'
 
 
