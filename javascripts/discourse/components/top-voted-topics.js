@@ -3,6 +3,7 @@ import { withPluginApi } from "discourse/lib/plugin-api"
 import { tracked } from '@glimmer/tracking';
 import { ajax } from "discourse/lib/ajax";
 import { action } from '@ember/object'
+import loadScript from "discourse/lib/load-script";
 import { bind } from "discourse-common/utils/decorators"
 
 export default class TopVoted extends Component {
@@ -12,6 +13,9 @@ export default class TopVoted extends Component {
 
     constructor() {
         super(...arguments);
+        loadScript(settings.theme_uploads_local.flip).then(() => {
+            //
+        });
         withPluginApi("0.3.0", (api) => {
             api.onPageChange((url, title) => {
                 if ((url == "/") || url.startsWith('/?')) {
@@ -32,7 +36,6 @@ export default class TopVoted extends Component {
                 }
             });
         });
-
     }
 
     get showComponent() {
@@ -71,10 +74,29 @@ export default class TopVoted extends Component {
     onComponentMount() {
         const element = document.querySelector('.top-voted-topics-list');
         element.addEventListener('scroll', (event) => {
-          var idx = Math.max(Math.floor(event.target.scrollLeft / 250), 0);
-          if (idx != this.index) {
-              this.updateIndicators(idx);
-          }
+            var idx = Math.max(Math.floor(event.target.scrollLeft / 250), 0);
+            if (idx != this.index) {
+                this.updateIndicators(idx);
+            }
         });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    for (var i=0; i<3; i++) {
+                        var el = document.querySelector(`#tick${i}`);
+                        if (el) {
+                            var tick = Tick.DOM.create(el, {
+                                value: Math.floor(Math.random() * 100 + 100),
+                                didInit: function(tick) {
+                                    tick.value=el.getAttribute('data-count');
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        });
+        observer.observe(element);
     }
 }

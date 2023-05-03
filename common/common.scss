@@ -71,3 +71,21 @@
     }
 
 }
+
+
+@import "flip.scss";
+
+.tick-credits {
+    display: none;
+}
+.tick-flip-panel {
+    color: #6161ff;
+    background-color: #eceff8 !important;
+}
+.tick {
+    max-width: 50%;
+}
+.tick-inline {
+    display: inline-block;
+    width: 4em;
+}

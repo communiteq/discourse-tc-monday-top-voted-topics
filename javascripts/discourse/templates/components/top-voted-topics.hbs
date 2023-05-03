@@ -1,11 +1,27 @@
+<script type="text/javascript">
+function handleTickInit(tick)
+{
+    setTimeout(function(){
+          //tick.value = 100;
+        }, 100);
+
+}
+//handleTickInit(1);
+</script>
+
+
 {{#if mustShow}}
 <div class="top-voted-topics" {{did-insert this.onComponentMount}}>
     <div class="header">Top voted ideas from the community</div>
     <div class="top-voted-topics-list">
-        {{#each top_voted_topics as |topic|}}
+        {{#each top_voted_topics as |topic index|}}
         <div class="top-voted-topic">
             <div class="vote-count">
-                {{topic.vote_count}} votes
+                <span id="tick{{index}}" data-count={{topic.vote_count}}>
+                    <div class="tick-inline" data-credits="false" data-repeat="true" data-transform="arrive(9, .001) -> round -> pad('   ') -> split -> delay(rtl, 100, 150)">
+                        <span data-view="flip">{{topic.vote_count}}</span>
+                    </div>
+                 votes</span>
             </div>
             <div class="vote-title">{{topic.title}}</div>
             <div class="vote-link">
