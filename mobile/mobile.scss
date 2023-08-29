@@ -1,19 +1,41 @@
 .top-voted-topics {
-    width: 100%;
     overflow-x: hidden;
+    margin: 0px -10px;
 
+    .header {
+        padding: 40px 30px 24px 26px;
+        margin: 0px;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 36px */
+        letter-spacing: -0.503px;
+    }
     .top-voted-topics-list {
         overflow-x: auto;
-        padding: 10px;
+        padding-left: 30px;
         row-gap: 10px;
+        column-gap: 10px;
 
         .top-voted-topic {
             box-sizing: border-box;
             min-width: 85%;
+
+            .vote-count {
+                margin: 0;
+            }
+            .vote-title {
+                font-size: 22px;
+                font-weight: 600;
+                line-height: 27px;
+                margin: 40px 0px 27px 0px;
+            }
         }
     }
     .circle-indicators {
         display: flex;
+        margin-top: 26px;
+        margin-bottom: 40px;
     }
 }
 
